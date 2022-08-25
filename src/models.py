@@ -23,11 +23,11 @@ class User(Base):
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
+    favoritesid = Column(Integer, ForeignKey("favorites.id"))
 
 class Favorite(Base):
     __tablename__ = 'favorites'
     id = Column(Integer, primary_key=True)
-    userid = Column(Integer, ForeignKey("users.id"))
     planetid = Column(Integer, ForeignKey("planets.id"))
     characterid = Column(Integer, ForeignKey("characters.id"))
     user = relationship(User)
